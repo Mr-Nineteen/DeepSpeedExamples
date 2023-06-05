@@ -55,16 +55,18 @@ def parse_args():
     )
     parser.add_argument(
         "--actor-model",
-        type=lambda x: x.replace("facebook/opt-", ""),
+        type=lambda x: x.replace("facebook/opt-", "").replace(
+            "bigscience/", ""),
         default="1.3b",
-        choices=("1.3b", "6.7b", "13b", "66b"),
+        choices=("1.3b", "6.7b", "13b", "66b", "bloom-560m", "bloom-7b1"),
         help="Which facebook/opt-* model to use for Actor (step 1)",
     )
     parser.add_argument(
         "--reward-model",
-        type=lambda x: x.replace("facebook/opt-", ""),
+        type=lambda x: x.replace("facebook/opt-", "").replace(
+            "bigscience/", ""),
         default="350m",
-        choices=("350m"),
+        choices=("350m", "bloom-560m"),
         help="Which facebook/opt-* model to use for Reward (step 2)",
     )
     parser.add_argument(
